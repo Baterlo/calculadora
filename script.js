@@ -15,18 +15,40 @@ function actualizar(){
     vida = test;
   }
   document.getElementById('daño').innerHTML = daño;
-  document.getElementById('vida1').innerHTML = vida-daño;
+  if ((temp=vida-daño)<0){
+    temp=0;
+  }
+  document.getElementById('vida1').innerHTML = temp;
   document.getElementById('doubt').innerHTML = daño*1.25;
-  document.getElementById('vida2').innerHTML = vida-daño*1.25;
+  if ((temp=vida-daño*1.25)<0){
+    temp=0;
+  }
+  document.getElementById('vida2').innerHTML = temp;
   document.getElementById('whisp').innerHTML = daño -50;
-  document.getElementById('vida3').innerHTML = vida-(daño -50);
-  document.getElementById('noWhisp').innerHTML = daño - 100;
-  document.getElementById('vida4').innerHTML = vida-(daño - 100);
+  if (vida<=(daño -50)) {
+    test = 0;
+  }else{
+    test = (vida - (daño - 100));
+  }
+  document.getElementById('vida3').innerHTML = test;
   document.getElementById('doubtWhisp').innerHTML = daño*1.25 -50;
-  document.getElementById('vida5').innerHTML = vida-(daño*1.25 -50);
-  document.getElementById('noDWhisp').innerHTML = daño*1.25 -90;
-  document.getElementById('vida6').innerHTML = vida-(daño*1.25 -90);
+  if (vida<=(daño*1.25 -50)) {
+    test = 0;
+  }else{
+    test = (vida - (daño*1.25 - 90));
+  }
+  document.getElementById('vida5').innerHTML = test;
 }
 
-document.getElementById('btn1').addEventListener('click',actualizar);
+document.getElementById('veneno').addEventListener('keyup', (e) =>{
+  if (e.keyCode === 13){
+    actualizar();
+  }
+});
+document.getElementById('vida').addEventListener('keyup', (e) =>{
+  if (e.keyCode === 13){
+    actualizar();
+  }
+});
+
 
